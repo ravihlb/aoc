@@ -34,7 +34,7 @@ import (
 
 func main() {
 	const inputFilePath = "./d1.input"
-	answer := solveInput(inputFilePath)
+	answer := sumFoundDigits(inputFilePath)
 
 	fmt.Println("Got final sum:", answer)
 }
@@ -45,7 +45,7 @@ func check(e error) {
 	}
 }
 
-func solveInput(path string) int64 {
+func sumFoundDigits(path string) int64 {
 	var digitsSum int64
 
 	file, err := os.Open(path)
