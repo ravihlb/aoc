@@ -1,4 +1,4 @@
-# aoc
+# Advent of Code
 Solving Advent of Code
 
 ## 2023
