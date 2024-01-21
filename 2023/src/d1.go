@@ -32,7 +32,7 @@ import (
 	str "strconv"
 )
 
-func main() {
+func init() {
 	const inputFilePath = "./d1.input"
 	answer := sumFoundDigits(inputFilePath)
 
@@ -70,10 +70,6 @@ func concatFirstAndLastDigits(line string) int64 {
 
 	composite, err := str.ParseInt(string([]rune{first, last}), 10, 64)
 	check(err)
-
-	// fmt.Println(line)
-	// fmt.Println("Got number ", composite)
-	// fmt.Println()
 
 	return composite
 }
