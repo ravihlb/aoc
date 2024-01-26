@@ -1,7 +1,14 @@
 /*
+
+Part 1:
 Determine which games would have been possible if the bag had been loaded with
 only 12 red cubes, 13 green cubes, and 14 blue cubes.
 What is the sum of the IDs of those games?
+
+Part 2:
+For each game, find the minimum set of cubes that must have been present.
+What is the sum of the power of these sets?
+
 */
 
 package main
@@ -51,8 +58,8 @@ func main() {
 		fmt.Println()
 	}
 
-	var answer int
-	fmt.Println(limits)
+	var sumOfValidIds int
+	var sumOfPowerOfSets int
 
 	for _, game := range games {
 
@@ -63,19 +70,30 @@ func main() {
 			"max blue shown:", game.maxBlueShown, "\n",
 			"max green shown:", game.maxGreenShown,
 		)
+
+		powerOfSet := (game.maxRedShown * game.maxGreenShown * game.maxBlueShown)
+		fmt.Println("Power of game set:", powerOfSet)
 		fmt.Println()
+
+		sumOfPowerOfSets += powerOfSet
 
 		if game.maxRedShown <= limits.maxRedShown &&
 			game.maxBlueShown <= limits.maxBlueShown &&
 			game.maxGreenShown <= limits.maxGreenShown {
 
 			fmt.Println("Game id", game.id, "is valid")
-			answer += game.id
+			fmt.Println()
+			sumOfValidIds += game.id
 			continue
 		}
+
 		fmt.Println("Game id", game.id, "is invalid")
+		fmt.Println()
+
 	}
-	fmt.Println("Final sum:", answer)
+
+	fmt.Println("Answer to part 1:", sumOfValidIds)
+	fmt.Println("Answer to part 2:", sumOfPowerOfSets)
 }
 
 func makeGamesList(file *os.File, limits CubeGame) ([]CubeGame, error) {
