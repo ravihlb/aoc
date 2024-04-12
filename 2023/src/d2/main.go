@@ -49,7 +49,7 @@ func main() {
 		maxBlueShown:  14,
 	}
 
-	games, err := makeGamesList(file, limits)
+	games, err := makeGamesList(file)
 	for i := 0; i < len(games); i++ {
 		fmt.Println("Game id:", games[i].id)
 		fmt.Println("max red shown:", games[i].maxRedShown)
@@ -96,16 +96,15 @@ func main() {
 	fmt.Println("Answer to part 2:", sumOfPowerOfSets)
 }
 
-func makeGamesList(file *os.File, limits CubeGame) ([]CubeGame, error) {
+func makeGamesList(file *os.File) ([]CubeGame, error) {
 	var games []CubeGame
 	scanner := bufio.NewScanner(file)
 
 	// for each line
 	for scanner.Scan() {
-		var id int
-		var err error
-
 		var (
+			err           error
+			id            int
 			maxRedShown   int
 			maxGreenShown int
 			maxBlueShown  int
